@@ -231,5 +231,127 @@ if x > 5: # True
 else:
     print("else")
     
+ LOOPS
  
+ while conditional_expression:
+    instruction
+    
+ counter = 5
+while counter != 0:
+    print("Inside the loop.", counter)
+    counter -= 1
+print("Outside the loop.", counter)
+
+LAB
+
+secret_number = 777
+
+print(
+"""
++================================+
+| Welcome to my game, muggle!    |
+| Enter an integer number        |
+| and guess what number I've     |
+| picked for you.                |
+| So, what is the secret number? |
++================================+
+""")
+
+guessing = int(input("Type a number, please: "))
+while guessing != secret_number:
+    print("Ha ha! You're stuck in my loop!")
+    guessing = int(input("Type a number, please: "))
+print(secret_number)
+print("Well done, muggle! You are free now.")
+
+END LAB
+
+for i in range(100):
+    # do_something()
+    pass
+
+for i in range(2, 8):#argumentos son principio y final del rango
+    print("The value of i is currently", i)
+    
+for i in range(2, 8, 3):
+    print("The value of i is currently", i)
+#The third argument is an increment - it's a value added to control the variable at every loop turn (as you may suspect, the default value of the increment is 1).
+
+LAB
+
+import time
+
+for i in range(5):
+    print(i+1,"Mississippi" )# Body of the loop - print the loop iteration number and the word .
+    time.sleep(1)# Body of the loop - use: time.sleep(1)
+
+print("Ready or not, here I come!")# Write a print function with the final message.
+
+END LAB
+
+These two instructions are:
+
+    break - exits the loop immediately, and unconditionally ends the loop's operation; the program begins to execute the nearest instruction after the loop's body;
+    continue - behaves as if the program has suddenly reached the end of the body; the next turn is started and the condition expression is tested immediately.
+CODE
+# break - example
+
+print("The break instruction:")
+for i in range(1, 6):
+    if i == 3:
+        break
+    print("Inside the loop.", i)
+print("Outside the loop.")
+
+
+# continue - example
+
+print("\nThe continue instruction:")
+for i in range(1, 6):
+    if i == 3:
+        continue
+    print("Inside the loop.", i)
+print("Outside the loop.")
+END CODE
+
+CODE
+largestNumber = -99999999
+counter = 0
+
+while True:
+    number = int(input("Enter a number or type -1 to end program: "))
+    if number == -1:
+        break
+    counter += 1
+    if number > largestNumber:
+        largestNumber = number
+
+if counter != 0:
+    print("The largest number is", largestNumber)
+else:
+    print("You haven't entered any number.")
+END CODE
+
+CODE
+largestNumber = -99999999
+counter = 0
+
+number = int(input("Enter a number or type -1 to end program: "))
+
+while number != -1:
+    if number == -1:
+        continue
+    counter += 1
+
+    if number > largestNumber:
+        largestNumber = number
+    number = int(input("Enter a number or type -1 to end program: "))
+
+if counter:
+    print("The largest number is", largestNumber)
+else:
+    print("You haven't entered any number.")
+END CODE
+
+
 

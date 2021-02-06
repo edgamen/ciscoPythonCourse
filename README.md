@@ -353,5 +353,74 @@ else:
     print("You haven't entered any number.")
 END CODE
 
+while True:
+    # Write code in the body of the loop.
+	# Put a conditional statement.
+	    # Exit the loop here.
+# Print the message.
+The break statement is used to exit/terminate a loop.
 
+Design a program that uses a while loop and continuously asks the user to enter a word unless the user enters "chupacabra" as the secret exit word, in which case the message "You've successfully left the loop." should be printed to the screen, and the loop should terminate.
+_____________________
+our program must:
 
+    ask the user to enter a word;
+    use userWord = userWord.upper() to convert the word entered by the user to upper case; we'll talk about the so-called string methods and the upper() method very soon - don't worry;
+    use conditional execution and the continue statement to "eat" the following vowels A, E, I, O, U from the inputted word;
+    print the uneaten letters to the screen, each one of them on a separate line.
+
+Test your program with the data we've provided for you.
+CODE
+# Prompt the user to enter a word
+userWord = input("Type a word: ")# and assign it to the userWord variable.
+userWord = userWord.upper()
+for letter in userWord:
+    # Complete the body of the for loop.
+    if letter == "A":
+        continue
+    if letter == "E":
+        continue
+    if letter == "I":
+        continue
+    if letter == "O":
+        continue
+    if letter == "U":
+        continue
+    print(letter)
+    
+ END CODE
+
+Your program must:
+
+    ask the user to enter a word;
+    use userWord = userWord.upper() to convert the word entered by the user to upper case; we'll talk about the so-called string methods and the upper() method very soon - don't worry;
+    use conditional execution and the continue statement to "eat" the following vowels A, E, I, O, U from the inputted word;
+    assign the uneaten letters to the wordWithoutVovels variable and print the variable to the screen.
+
+Look at the code in the editor. We've created wordWithoutVovels and assigned an empty string to it. Use concatenation operation to ask Python to combine selected letters into a longer string during subsequent loop turns, and assign it to the wordWithoutVovels variable.
+
+CODE
+wordWithoutVovels = ""
+
+# Prompt the user to enter a word
+userWord = input("Type a word: ")# and assign it to the userWord variable
+userWord = userWord.upper()
+
+for letter in userWord:
+    if letter == "A":
+        continue
+    if letter == "E":
+        continue
+    if letter == "I":
+        continue
+    if letter == "O":
+        continue
+    if letter == "U":
+        continue
+    wordWithoutVovels = wordWithoutVovels + letter
+print(wordWithoutVovels)
+END CODE
+WHILE AND FOR HAVE AN ELSE  SENTENCE WHICH SHOWS THE FALSE FINAL RESULT
+
+3.1.2.14 LAB
+  

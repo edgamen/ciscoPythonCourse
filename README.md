@@ -1,6 +1,301 @@
 # ciscoPythonCourse
 Notas curso Python de Cisco
 
+print() funcion(argumento) muestra cadenas ente aspas '' o ""
+
+Que argumentos print() espera?
+
+Quaisquer. Mostrar-lhe-emos em breve que print() é capaz de operar com virtualmente todos os tipos de dados oferecidos pelo Python. Strings, números, carateres, valores lógicos, objetos - qualquer um destes pode ser passado com sucesso para print().
+
+Simbolo de escape con n para agregar un salto de linea  /n
+ para usar varios argumentos en una funcion se separan los argumentos con , virgula
+ 
+ 
+    a função print() invocada com mais do que um argumento faz output de todos eles numa só linha;
+    a função print() coloca um espaço entre os argumentos de output, por sua própria iniciativa.
+
+forma posicional de passar argumentos
+argumentos de keyword  ej. end = " "  (indica como se representará el final de la funcion, por omision es equivalente a end = "/n")
+ O argumento de keyword que pode fazer isto é chamado sep (como separador)
+ print("My", "name", "is", "Monty", "Python.", sep="-")
+ 
+ print("My", "name", "is", sep="_", end="*")
+print("Monty", "Python.", sep="*", end="*\n")
+
+
+ 2.1.1.18 LAB: A função print()
+
+
+Tempo estimado
+
+5-10 minutos
+Nível de dificuldade
+
+Muito fácil
+Objetivos
+
+    familiarizar-se com a função print() e as suas capacidades de formatação;
+    experimentar com código Python.
+
+Cenário
+
+Modifique a primeira linha de código no editor, usando as keywords sep e end , para corresponder ao output esperado. Use as duas print() funções no editor.
+
+Não mude nada na segunda invocação print() .
+Output esperado
+Programming***Essentials***in...Python
+
+Solucion
+print("Programming","Essentials","in", sep="***", end="...")
+print("Python")
+
+ 2.1.1.19 LAB: Formatar o output
+LAB
+
+Tempo estimado
+
+5-15 minutos
+Nível de dificuldade
+
+Fácil
+Objetivos
+
+    experimentar com o código Python existente;
+    descobrir e corrigir erros básicos de sintaxe;
+    familiarizar-se com a função print() e os seus recursos de formatação.
+
+Cenário
+
+Encorajamo-lo vivamente a brincar com o código que escrevemos para si, e a fazer algumas (talvez mesmo destrutivas) alterações. Sinta-se livre para modificar qualquer parte do código, mas há uma condição - aprenda com os seus erros e tire as suas próprias conclusões.
+
+Tente:
+
+    minimizar o número de invocações da função print() inserindo a sequência \n nas strings
+    fazer a seta duas vezes maior (mas mantendo as proporções)
+    duplicar a seta, colocando ambas as setas lado a lado; nota: uma string pode ser multiplicada usando o seguinte truque: "string" * 2 produzirá "stringstring" (brevemente, falaremos mais sobre o assunto)
+    retire qualquer uma das aspas, e veja cuidadosamente a resposta do Python; preste atenção ao local onde o Python vê um erro - é este o local onde o erro realmente existe?
+    faça o mesmo com alguns dos parêntesis;
+    altere qualquer uma das print palavras por outra coisa, diferindo apenas no caso (por exemplo, Print) - o que acontece agora?
+    substitua algumas das aspas por apóstrofes; observe cuidadosamente o que acontece.
+
+print("    *")
+print("   * *")
+print("  *   *")
+print(" *     *")
+print("***   ***")
+print("  *   *")
+print("  *   *")
+print("  *****")
+
+https://edube.org/sandbox/bb018eb8-4e38-11ec-af5b-0242157e55ca
+https://edube.org/sandbox/cedee96c-4e38-11ec-9033-0242157e55ca
+
+Key takeaways
+
+1. A função print() é uma função incorporada. Imprime/faz output de uma mensagem especificada para a janela do ecrã/consola.
+
+2. As funções incorporadas, ao contrário das funções definidas pelo utilizador, estão sempre disponíveis e não têm de ser importadas. O Python 3.8 vem com 69 funções incorporadas. Pode encontrar a sua lista completa fornecida em ordem alfabética na Biblioteca Padrão Python.
+
+3. Para chamar uma função (este processo é conhecido como invocação de função ou chamada de função), é necessário usar o nome da função seguido de parêntesis. Pode passar argumentos para uma função, colocando-os dentro dos parêntesis. Deve separar os argumentos com uma vírgula, por exemplo, print("Hello,", "world!"). Uma função “vazia” print() faz output de uma linha vazia para o ecrã.
+
+4. As strings de Python são delimitadas com aspas, por exemplo, "I am a string" (aspas duplas), ou 'I am a string, too' (aspas simples).
+
+5. Os programas de computador são coleções de instruções. Uma instrução é um comando para executar uma tarefa específica quando executada, por exemplo, para imprimir uma determinada mensagem no ecrã.
+
+6. Em strings de Python a barra invertida (\) é um caratere especial que anuncia que o próximo caratere tem um significado diferente, por exemplo \n (the newline character) starts a new output line.
+
+7. Os argumentos posicionais são aqueles cujo significado é ditado pela sua posição, por exemplo, o segundo argumento é apresentado após o primeiro, o terceiro é apresentado após o segundo, etc.
+
+8. Os argumentos de keyword são aqueles cujo significado não é ditado pela sua localização, mas por uma palavra especial (keyword) utilizada para os identificar.
+
+9. Os loops end e sep podem ser usados para formatar o output da função print() . O parâmetro sep especifica o separador entre os argumentos de output (por exemplo, o parâmetro print("H", "E", "L", "L", "O", sep="-"), enquanto o parâmetro end especifica o que imprimir no final da declaração print.
+
+Literales o tipos de datos en Python
+En enteros se pueden usar underscores para separar las unidades de mil. Ej: 11_111_111
+Se usa 0o para especificar si un numero es octal y 0x para los numeros hexadecimales
+
+Los float usan el punto decimal como separador de su parte fracionaria
+sa debe usar 3E8 o 3e8 para indicar un exponente decimal
+1e-22
+Strings
+Se pueden incluir aspas en un string usando el caracter se escape /" o intercalando dobles comillas con sencillas
+print('I\'m Monty Python.')
+print("I'm Monty Python.")
+Booleanos estan determinados por los vaslores True y False
+print(True > False)
+print(True < False)
+
+
+
+2.2.1.11 LAB: literais de Python - strings
+Tempo estimado
+
+5-10 minutos
+Nível de dificuldade
+
+Fácil
+Objetivos
+
+    familiarizar-se com a função print() e as suas capacidades de formatação;
+    praticar codificação de strings;
+    experimentar com código Python.
+
+Cenário
+
+Escreva um código de uma linha, utilizando a função print() , bem como os carateres de newline e de escape, para corresponder ao resultado esperado emitido em três linhas.
+Output esperado
+
+"I'm"
+""learning""
+"""Python"""
+
+Solucion
+print('"I\'m"\n','""learning""\n','"""Python"""', sep="")
+
+Key takeaways
+
+1. Os literais são notações para representar alguns valores fixos em código. O Python tem vários tipos de literais - por exemplo, um literal pode ser um número (literais numéricos, por exemplo, 123), ou uma string (literais de string, por exemplo, “Eu sou um literal.“).
+
+2. O sistema binário é um sistema de números que emprega 2 como base. Portanto, um número binário é composto apenas por 0s e 1s, por exemplo, 1010 é 10 em decimal.
+Os sistemas de numeração octal e hexadecimal, do mesmo modo, empregam 8 e 16 como suas bases, respetivamente. O sistema hexadecimal utiliza os números decimais e seis letras extra.
+
+3. Inteiros (ou simplesmente ints) são um dos tipos numéricos suportados pelo Python. São números escritos sem um componente fracionário, por exemplo, 256, ou -1 (inteiros negativos).
+
+4. Números de floating-point (ou simplesmente floats) são outro dos tipos numéricos suportados pelo Python. São números que contêm (ou são capazes de conter) um componente fracionário, por exemplo 1.27.
+
+5. Para codificar uma apóstrofe ou uma aspa dentro de uma string, pode usar o caratere de escape, por exemplo, 'I\'m happy.', ou abrir e fechar a string utilizando um conjunto de símbolos opostos aos que deseja codificar, por exemplo "I'm happy." codificar uma apóstrofe, e 'He said "Python", not "typhoon"' para codificar umas aspas (duplas).
+
+6. Valores booleanos são os dois objetos constantes True e False usado para representar valores de verdade (em contextos numéricos 1 é True, enquanto 0 é False.
+
+EXTRA
+
+Há mais um literal especial que é usado em Python: o literal None . Este literal é um chamado NoneType objeto, e é utilizado para representar a ausência de um valor. Em breve, contar-lhe-emos mais sobre isso.
+
+Operadores matematicos
+Começaremos pelos operadores que estão associados às operações aritméticas mais amplamente reconhecidas:
+
++, -, *, /, //, %, **
+
+É possível formular as seguintes regras com base neste resultado:
+
+    quando ambos os argumentos ** são inteiros, o resultado é também um inteiro;
+    quando pelo menos um argumento ** é um float, o resultado é também um float.
+print(2 ** 3)
+print(2 ** 3.)
+print(2. ** 3)
+print(2. ** 3.)
+
+O resultado produzido pelo operador da divisão é sempre um float
+print(6 / 3)
+print(6 / 3.)
+print(6. / 3)
+print(6. / 3.)
+
+O resultado da divisão inteira é sempre arredondado para o valor inteiro mais próximo, que é inferior ao resultado real (não arredondado).
+
+Isto é muito importante: o arredondamento vai sempre para o número inteiro menor.
+Modulo (%) O resultado do operador é um remainder (resto) deixado após a divisão inteira.
+operadores unarios y binarios
+
+La prioridad de operaciones es de izquierda a derecha con excepcion de la exponenciacion que va de derecha a izquierda
+
+
+Prioridade 	Operador 	
+1 	+, - 	unário
+2 	** 	
+3 	*, /, //, % 	
+4 	+, - 	binário
+
+Key takeaways
+
+1. Uma expressão é uma combinação de valores (ou variáveis, operadores, chamadas a funções - em breve aprenderá sobre elas) que avalia a um valor, por exemplo, 1 + 2.
+
+2. Os operadores são símbolos especiais ou keywords capazes de operar sobre os valores e realizar operações (matemáticas), por exemplo, o * operador multiplica dois valores: x * y.
+
+3. Operadores aritméticos em Python: + (adição), - (subtração), * (multiplicação), / (divisão clássica - devolve sempre um float), % (módulo - divide o operando esquerdo pelo operando direito e devolve o resto da operação, por exemplo, 5 % 2 = 1), ** (exponenciação - operando esquerdo elevado à potência do operando direito, por exemplo, 2 ** 3 = 2 * 2 * 2 = 8), // (divisão por piso/inteiro - devolve um número resultante da divisão, mas arredondado para baixo para o número inteiro mais próximo, por exemplo 3 // 2.0 = 1.0)
+
+4. Um operador unário é um operador com apenas um operando, por exemplo, -1, ou +3.
+
+5. Um operador binário é um operador com dois operandos, por exemplo, 4 + 5, ou 12 % 5.
+
+6. Alguns operadores atuam antes de outros - a hierarquia de prioridades:
+
+    unário + e - têm a prioridade mais alta
+    depois: **, depois: *, /, e %e, depois, a prioridade mais baixa: binário + e -.
+
+7. Subexpressões entre parêntesis são sempre calculadas em primeiro lugar, por exemplo, 15 - 1 * (5 * (1 + 2)) = 0.
+
+8. O operador de exponenciação utiliza ligação do lado direito, por exemplo 2 ** 2 ** 3 = 256.
+
+
+¿Qué son las Variables?
+
+Es justo que Python nos permita codificar literales, las cuales contengan valores numéricos y cadenas.
+
+Ya hemos visto que se pueden hacer operaciones aritméticas con estos números: sumar, restar, etc. Esto se hará una infinidad de veces en un programa.
+
+Pero es normal preguntar como es que se pueden almacenar los resultados de estas operaciones, para poder emplearlos en otras operaciones, y así sucesivamente.
+
+¿Cómo almacenar los resultados intermedios, y después utilizarlos de nuevo para producir resultados subsecuentes?
+
+Python ayudará con ello. Python ofrece "cajas" (contenedores) especiales para este propósito, estas cajas son llamadas variables - el nombre mismo sugiere que el contenido de estos contenedores puede variar en casi cualquier forma.
+
+¿Cuáles son los componentes o elementos de una variable en Python?
+
+    Un nombre.
+    Un valor (el contenido del contenedor).
+
+Comencemos con lo relacionado al nombre de la variable.
+
+Las variables no aparecen en un programa automáticamente. Como desarrollador, tu debes decidir cuantas variables deseas utilizar en tu programa.
+
+También las debes de nombrar.
+
+Si se desea nombrar una variable, se deben seguir las siguientes reglas:
+
+    El nombre de la variable debe de estar compuesto por MAYUSCULAS, minúsculas, dígitos, y el carácter _ (guion bajo).
+    El nombre de la variable debe comenzar con una letra.
+    El carácter guion bajo es considerado una letra.
+    Las mayúsculas y minúsculas se tratan de forma distinta (un poco diferente que en el mundo real - Alicia y ALICIA son el mismo nombre, pero en Python son dos nombres de variable distintos, subsecuentemente, son dos variables diferentes).
+    El nombre de las variables no pueden ser igual a alguna de las palabras reservadas de Python (se explicará más de esto pronto).
+
+
+O que são variáveis?
+
+Parece bastante óbvio que o Python deveria permitir-lhe codificar literais transportando valores de número e texto.
+
+Já sabe que pode fazer algumas operações aritméticas com estes números: adicionar, subtrair, etc. Fá-lo-á muitas vezes.
+
+Mas é uma questão bastante normal de perguntar como armazenar os resultados destas operações, a fim de os utilizar noutras operações, e assim por diante.
+
+Como guardar os resultados intermediários, e utilizá-los novamente para produzir os resultados subsequentes?
+
+O Python irá ajudá-lo nisso. Oferece "caixas" especiais (em inglês, containers) para esse fim, e estas caixas são chamadas variáveis - o próprio nome sugere que o conteúdo destes containers pode ser variado em (quase) qualquer forma.
+
+O que tem cada variável Python?
+
+    um nome;
+    um valor (o conteúdo do container)
+
+Comecemos com as questões relacionadas com o nome de uma variável.
+
+As variáveis não aparecem automaticamente num programa. Como programador, deve decidir quantas e quais as variáveis a utilizar nos seus programas.
+
+Deve também nomeá-las.
+
+Se quiser dar um nome a uma variável, deve seguir algumas regras estritas:
+
+    o nome da variável deve ser composto por letras maiúsculas ou minúsculas, dígitos e o caratere _ (underscore)
+    o nome da variável deve começar com uma letra;
+    o caratere underscore é uma letra;
+    letras maiúsculas e minúsculas são tratadas como diferentes (um pouco diferente do que no mundo real - Alice e ALICE são os mesmos nomes próprios, mas em Python são dois nomes de variáveis diferentes, e consequentemente, duas variáveis diferentes);
+    o nome da variável não deve ser nenhuma das palavras reservadas de Python (as keywords - explicaremos mais sobre isto em breve).
+
+Uma variável passa a existir como o resultado da atribuição de um valor a ela. Ao contrário de outras linguagens, não precisa de a declarar de nenhuma forma especial.
+
+
+
+
 TRabajo perdido
 LAB
 john = 3

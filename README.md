@@ -293,7 +293,11 @@ Se quiser dar um nome a uma variável, deve seguir algumas regras estritas:
 
 Uma variável passa a existir como o resultado da atribuição de um valor a ela. Ao contrário de outras linguagens, não precisa de a declarar de nenhuma forma especial.
 
+Pode utilizar a função print() e combinar texto e variáveis usando o operador + para fazer output de strings e variáveis, por exemplo:
+var = "3.8.5"
+print("Python version: " + var)
 
+2.4.1.7 LAB: Variáveis
 
 
 TRabajo perdido
@@ -306,6 +310,44 @@ totalApples = john + mary + adam
 print(totalApples)
 print("Total number of apples: ",totalApples)
 FIN LAB
+
+Operadores Abreviados
+
+Es tiempo de explicar el siguiente conjunto de operadores que harán la vida del programador/desarrollador mas fácil.
+
+Muy seguido, se desea utilizar la misma variable al lado derecho y al lado izquierdo del operador =.
+
+Por ejemplo, si se necesita calcular una serie de valores sucesivos de la potencia de 2, se puede usar el siguiente código:
+x = x * 2
+
+También, puedes utilizar una expresión como la siguiente si no puedes dormir y estas tratando de resolverlo con alguno de los métodos tradicionales:
+oveja = oveja + 1
+
+Python ofrece una manera mas corta de escribir operaciones como estas, lo cual se puede codificar de la siguiente manera:
+x *= 2
+oveja+= 1
+
+A continuación se intenta presentar una descripción general para este tipo de operaciones.
+
+Si op es un operador de dos argumentos (esta es una condición muy imporante) y el operador es utilizado en el siguiente contexto:
+variable = variable op expresión
+
+Puede ser simplificado de la siguiente manera:
+variable op= expresión
+
+Observa los siguientes ejemplos. Asegúrate de entenderlos todos.
+
+i = i + 2 * j ⇒ i += 2 * j
+
+var = var / 2 ⇒ var /= 2
+
+rem = rem % 10 ⇒ rem %= 10
+
+j = j - (i + var + rem) ⇒ j -= (i + var + rem)
+
+x = x ** 2 ⇒ x **= 2
+
+
 Shortcuts operators
 Let's try to present a general description for these operations.
 
@@ -327,6 +369,16 @@ j = j - (i + var + rem) ⇒ j -= (i + var + rem)
 
 x = x ** 2 ⇒ x **= 2
 
+Sin corregir:
+kilometros = 12.25
+millas = 7.38
+
+millas_a_kilometros = ###
+kilometros_a_millas = ###
+
+print(millas, " millas son ", round(millas_a_kilometros, 2), " kilómetros ")
+print(kilometros, " kilómetros son ", round(kilometros_a_millas, 2), " millas ")
+
 LAB
 kilometers = 12.25
 miles = 7.38
@@ -346,7 +398,34 @@ y = (3 * x ** 3) - (2 * x ** 2) + (3 * x) - 1
 print("y =", y)
 FIN LAB
 
+Key takeaways
+
+1. Uma variável é um local nomeado, reservado para armazenar valores na memória. Uma variável é criada ou inicializada automaticamente quando se lhe atribui um valor pela primeira vez. (2.1.4.1)
+
+2. Cada variável deve ter um nome exclusivo - um identificador. Um nome de identificador válido deve ser uma sequência não vazia de carateres, deve começar com o underscore (_), ou uma letra, e não pode ser uma keyword de Python. O primeiro caratere pode ser seguido por underscores, letras e dígitos. Os identificadores em Python diferenciam entre maiúsculas e minúsculas (são case-sensitive). (2.1.4.1)
+
+3. O Python é uma linguagem dinamicamente dactilografada, o que significa que não precisa de declarar variáveis nela contidas. (2.1.4.3) Para atribuir valores a variáveis, pode-se utilizar um operador de atribuição simples na forma do sinal (=) igual, ou seja, var = 1.
+
+4. Também pode utilizar operadores de atribuição composta (operadores de atalho) para modificar valores atribuídos a variáveis, por exemplo, var += 1, ou var /= 5 * 2. (2.1.4.8)
+
+5. Pode atribuir novos valores a variáveis já existentes, utilizando o operador de atribuição ou um dos operadores compostos, por exemplo: (2.1.4.5)
+var = 2
+print(var)
+
+var = 3
+print(var)
+
+var += 1
+print(var)
+
+
+6. Pode combinar texto e variáveis utilizando o operador + , e utilizar a função print() para fazer output de strings e variáveis, por exemplo: (2.1.4.4)
+var = "007"
+print("Agent " + var)
+
+
 The comment are made with the # symbol
+2.1.5.2 LABORATORIO: Comentarios
 LAB
 #this program computes the number of seconds in a given number of hours
 # this program has been written two days ago
@@ -360,6 +439,49 @@ print("Goodbye")
 #here we should also print "Goodbye", but a programmer didn't have time to write any code
 #this is the end of the program that computes the number of seconds in 2 hour
 FIN LAB
+#this program computes the number of seconds in a given number of hours
+
+hours = 2 
+seconds = 3600 # number of seconds in 1 hour
+
+print("Hours: ", hours) #printing the number of hours
+print("Seconds in Hours: ", hours * seconds) # printing the number of seconds in a given number of hours
+print("Goodbye")
+
+Key takeaways
+
+1. Os comentários podem ser utilizados para deixar informações adicionais em código. São omitidos em runtime. A informação deixada no source code é dirigida aos leitores humanos. Em Python, um comentário é um pedaço de texto que começa com #. O comentário estende-se até ao fim da linha.
+
+2. Se quiser colocar um comentário que abranja várias linhas, precisa de colocar # à frente de todas elas. Além disso, pode utilizar um comentário para marcar um pedaço de código que não é necessário neste momento (ver a última linha do snippet abaixo), por exemplo:
+# This program prints
+# an introduction to the screen.
+print("Hello!")  # Invoking the print() function
+# print("I'm Python.")
+
+
+3. Sempre que possível e justificado, deve dar nomes self-commenting às variáveis, por exemplo, se estiver a utilizar duas variáveis para armazenar um comprimento (em inglês, length) e largura (width) de algo, os nomes das variáveis length e width podem ser uma escolha melhor do que myvar1 e myvar2.
+
+4. É importante utilizar comentários para tornar os programas mais fáceis de compreender, e utilizar nomes de variáveis legíveis e significativos em código. Contudo, é igualmente importante não usar nomes de variáveis que sejam confusos, ou deixar comentários que contenham informações erradas ou incorretas!
+
+5. Os comentários podem ser importantes quando você estiver a ler o seu próprio código após algum tempo (confie em nós, os programadores esquecem-se do que o seu próprio código faz), e quando outros estão a ler o seu código (pode ajudá-los a compreender o que os seus programas fazem e como o fazem mais rapidamente).
+
+Puntos Clave
+
+1. Los comentarios pueden ser utilizados para colocar información adicional en el código. Son omitidos al momento de la ejecución. Dicha información es para los lectores que están manipulando el código. En Python, un comentario es un fragmento de texto que comienza con un #. El comentario se extiende hasta el final de la línea.
+
+2. Si deseas colocar un comentario que abarque varias líneas, es necesario colocar un # al inicio de cada línea. Además, se puede utilizar un comentario para marcar un fragmento de código que no es necesaria en el momento y no se desea ejecutar. (observa la ultima línea de código del siguiente fragmento), por ejemplo:
+# Este programa imprime
+# un saludo en pantalla
+print("Hola!")  # Se invoca la función print() function
+# print("Soy Python.")
+
+3. Cuando sea posible, se deben auto comentar los nombres de las variables, por ejemplo, si se están utilizando dos variables para almacenar la altura y longitud de algo, los nombres altura y longitud son una mejor elección que mivar1 y mivar2.
+
+4. Es importante utilizar los comentarios para que los programas sean más fáciles de entender, además de emplear variables legibles y significativas en el código. Sin embargo, es igualmente importante no utilizar nombres de variables que sean confusos, o dejar comentarios que contengan información incorrecta.
+
+5. Los comentarios pueden ser muy útiles cuando tu estas leyendo tu propio código después de un tiempo (es común que los desarrolladores olviden lo que su propio código hace), y cuando otros están leyendo tu código (les puede ayudar a comprender que es lo que hacen tus programas y como es que lo hacen).
+
+
 
 input() function supports arguments and captures strings
 input("Esta pregunta aparece sin problema: ")

@@ -482,6 +482,7 @@ print("Hola!")  # Se invoca la función print() function
 5. Los comentarios pueden ser muy útiles cuando tu estas leyendo tu propio código después de un tiempo (es común que los desarrolladores olviden lo que su propio código hace), y cuando otros están leyendo tu código (les puede ayudar a comprender que es lo que hacen tus programas y como es que lo hacen).
 
 
+Já o dissemos, mas deve ser afirmado uma vez mais sem ambiguidade: o resultado da função input() é uma string.
 
 input() function supports arguments and captures strings
 input("Esta pregunta aparece sin problema: ")
@@ -493,6 +494,17 @@ e.g.
 anything = float(input("Enter a number: "))
 something = anything ** 2.0
 print(anything, "to the power of 2 is", something)
+
+leg_a = float(input("Input first leg length: "))
+leg_b = float(input("Input second leg length: "))
+hypo = (leg_a**2 + leg_b**2) ** .5
+print("Hypotenuse length is", hypo)
+
+leg_a = float(input("Input first leg length: "))
+leg_b = float(input("Input second leg length: "))
+print("Hypotenuse length is", (leg_a**2 + leg_b**2) ** .5)
+
+
 
 Concatenation uses + 
 
@@ -525,6 +537,99 @@ print("La division de los dos numeros es:", a / b)
 print("\nThat's all, folks!")
 FIN LAB
 
+
+ 2.6.1.10 LAB: Operadores e expressões
+Tempo estimado
+
+20 minutos
+Nível de dificuldade
+
+Intermédio
+Objetivos
+
+    familiarizar-se com o conceito de números, operadores e operações aritméticas em Python;
+    compreender a precedência e associatividade dos operadores Python, bem como o uso adequado de parêntesis.
+
+Cenário
+
+A sua tarefa é a de completar o código, de forma a avaliar a seguinte expressão:
+
+O resultado deve ser atribuído a y. Tenha cuidado - observe os operadores e mantenha as suas prioridades em mente. Não hesite em utilizar os parêntesis de que necessitar.
+
+Pode utilizar variáveis adicionais para encurtar a expressão (mas não é necessário). Teste o seu código com cuidado.
+
+Dados de Teste
+
+Input de amostra: 1
+
+Output esperado:
+y = 0.6000000000000001
+
+Input de amostra: 10
+
+Output esperado:
+y = 0.09901951266867294
+
+Input de amostra: 100
+
+Output esperado:
+y = 0.009999000199950014
+
+Input de amostra: -5
+
+Output esperado:
+y = -0.19258202567760344
+
+    Sandbox
+
+Code
+x = float(input("Enter value for x: "))
+
+# Write your code here.
+
+print("y =", y)
+
+    Console
+
+
+****
+
+**Nível de dificuldade
+
+Fácil
+Objetivos
+
+    melhorar a capacidade de utilizar números, operadores, e operações aritméticas em Python;
+    utilizar as capacidades de formatação da função print() ;
+    aprender a expressar os fenómenos da vida quotidiana em termos de linguagem de programação.
+
+Cenário
+
+A sua tarefa é preparar um código simples capaz de avaliar o tempo final de um período de tempo, dado como um número de minutos (pode ser arbitrariamente grande). O tempo inicial é dado como um par de horas (0.. 23) e minutos (0.. 59). O resultado tem de ser impresso para a consola.
+
+Por exemplo, se um evento começar às 12:17 e durar 59 minutos, ele terminará às 13:16.
+
+Não se preocupe com quaisquer imperfeições no seu código - não faz mal se aceitar um tempo inválido - o mais importante é que o código produza resultados válidos para dados de input válidos.
+
+Teste o seu código com cuidado. Dica: utilizar o operador % pode ser a chave para o sucesso.
+Dados de teste
+
+Input de amostra:
+12
+17
+59
+
+Output esperado: 13:16
+
+Input de amostra:
+23
+58
+642
+
+
+Output esperado: 10🈴**
+
+
 x = float(input("Enter value for x: "))
 y = 1./(x + 1./(x + 1./(x + 1./x)))
 print("y =", y)
@@ -539,7 +644,48 @@ added_mins = dura % 60
 final_hour = hour + added_hour
 final_mins = mins + added_mins
 
+
 print(round(final_hour), final_mins, sep = ":")
+
+Key takeaways
+
+1. A função print() envia dados para a consola, enquanto a função input() obtém dados da consola.
+
+2. O método input() vem com um parâmetro opcional: a string prompt. Permite-lhe escrever uma mensagem antes do input do utilizador, por exemplo
+name = input("Enter your name: ")
+print("Hello, " + name + ". Nice to meet you!")
+
+
+3. Quando a função input() é chamada, o fluxo do programa é interrompido, o símbolo de prompt continua a piscar (pede ao utilizador para tomar medidas quando a consola é mudada para o modo de input) até o utilizador ter introduzido um input e/ou premido a tecla Enter.
+
+NOTA
+
+Pode testar a funcionalidade da função input() em todo o seu scope localmente na sua máquina. Por razões de otimização de recursos, limitámos o tempo máximo de execução do programa no Edube a alguns segundos. Vá à Sandbox, copie-cole o snippet acima, execute o programa, e não faça nada - espere apenas alguns segundos para ver o que acontece. O seu programa deve ser interrompido automaticamente após um breve momento. Agora abra o IDLE, e execute lá o mesmo programa - consegue ver a diferença?
+
+Dica: a característica acima mencionada da função input() pode ser utilizada para solicitar o utilizador a terminar um programa. Veja o código em baixo:
+name = input("Enter your name: ")
+print("Hello, " + name + ". Nice to meet you!")
+
+print("\nPress Enter to end the program.")
+input()
+print("THE END.")
+
+
+3. O resultado da função input() é uma string. Podem adicionar-se strings umas às outras usando a concatenação (+) operador. Verifique este código:
+num_1 = input("Enter the first number: ") # Enter 12
+num_2 = input("Enter the second number: ") # Enter 21
+
+print(num_1 + num_2) # the program returns 1221
+
+
+4. Também pode multiplicar (* - replicação) strings, por exemplo:
+my_input = input("Enter something: ") # Example input: hello
+print(my_input * 3) # Expected output: hellohellohello
+
+
+
+
+
 Modulo 3
 Comparison operators
 == ¡= > >= < <= 

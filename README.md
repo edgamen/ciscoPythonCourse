@@ -805,6 +805,35 @@ while counter != 0:
     counter -= 1
 print("Outside the loop.", counter)
 
+# A program that reads a sequence of numbers
+# and counts how many numbers are even and how many are odd.
+# The program terminates when zero is entered.
+
+odd_numbers = 0
+even_numbers = 0
+
+# Read the first number.
+number = int(input("Enter a number or type 0 to stop: "))
+
+# 0 terminates execution.
+while number != 0:
+    # Check if the number is odd.
+    if number % 2 == 1:
+        # Increase the odd_numbers counter.
+        odd_numbers += 1
+    else:
+        # Increase the even_numbers counter.
+        even_numbers += 1
+    # Read the next number.
+    number = int(input("Enter a number or type 0 to stop: "))
+
+# Print results.
+print("Odd numbers count:", odd_numbers)
+print("Even numbers count:", even_numbers)
+
+
+ 3.1.2.3 LABORATORIO: Lo esencial del ciclo while - Adivina el número secreto
+
 LAB
 
 secret_number = 777
@@ -829,6 +858,72 @@ print("Well done, muggle! You are free now.")
 
 END LAB
 
+
+Fazer loop ao seu código com for
+
+Outro tipo de loop disponível em Python vem da observação de que por vezes é mais importante contar as "voltas" do loop do que verificar as condições.
+
+Imagine que o corpo de um loop precisa de ser executado exatamente cem vezes. Se desejar utilizar o loop while para o fazer, pode ser assim:
+i = 0
+while i < 100:
+    # do_something()
+    i += 1
+
+
+Seria bom se alguém pudesse fazer esta contagem aborrecida por si. Isso é possível?
+
+Claro que é - há um loop especial para estes tipos de tarefas, e é chamado for.
+
+Na verdade, o loop for foi concebido para realizar tarefas mais complicadas - pode "navegar" por grandes coleções de dados item por item. Mostraremos como fazê-lo em breve, mas neste momento vamos apresentar uma variante mais simples da sua aplicação.
+
+Dê uma vista de olhos no snippet:
+for i in range(100):
+    # do_something()
+    pass
+
+
+Existem alguns novos elementos. Deixe-nos falar sobre eles:
+
+    a keyword for abre o loop for ; nota - não há nenhuma condição depois; não é preciso pensar nas condições, uma vez que são verificadas internamente, sem qualquer intervenção;
+    qualquer variável após a keyword for é a variável de controlo do loop; conta as voltas do loop, e fá-lo automaticamente;
+    a keyword in introduz um elemento de sintaxe que descreve a gama de valores possíveis que estão a ser atribuídos à variável de controlo;
+    a função range() (esta é uma função muito especial) é responsável por gerar todos os valores desejados da variável de controlo; no nosso exemplo, a função irá criar (podemos mesmo dizer que irá alimentar o loop com) valores subsequentes a partir do conjunto seguinte: 0, 1, 2 .. 97, 98, 99; nota: neste caso, a função range() começa o seu trabalho a partir do 0 e termina um passo (um número inteiro) antes do valor do seu argumento;
+    note a keyword pass dentro do corpo do loop - não faz nada; é uma instrução vazia - colocamo-la aqui porque a for sintaxe do laço exige pelo menos uma instrução dentro do corpo (a propósito - if, elif, else e while expressam a mesma coisa)
+
+Os nossos próximos exemplos serão um pouco mais modestos no número de repetições do loop.
+
+
+Veja o snippet abaixo. Consegue prever o seu output?
+for i in range(10):
+    print("The value of i is currently", i)
+
+
+Execute o código para verificar se estava certo.
+
+Nota:
+
+    o loop foi executado dez vezes (é o argumento da função range() )
+    o valor da última variável de controlo é 9 (não 10, visto começar a partir de 0, não a partir de 1)
+
+A função range() pode ser equipada com dois argumentos, e não apenas um:
+for i in range(2, 8):
+    print("The value of i is currently", i)
+
+
+Neste caso, o primeiro argumento determina o (primeiro) valor inicial da variável de controlo.
+
+O último argumento mostra o primeiro valor que a variável de controlo não será atribuída.
+
+Nota: a função range() aceita apenas inteiros como seus argumentos, e gera sequências de inteiros.
+
+Consegue adivinhar o output do programa? Execute-o para verificar se também estava certo agora.
+
+O primeiro valor mostrado é 2 (retirado do primeiro argumento range().)
+
+O último é 7 (embora o range()segundo argumento seja 8).
+
+
+
 for i in range(100):
     # do_something()
     pass
@@ -839,6 +934,43 @@ for i in range(2, 8):#argumentos son principio y final del rango
 for i in range(2, 8, 3):
     print("The value of i is currently", i)
 #The third argument is an increment - it's a value added to control the variable at every loop turn (as you may suspect, the default value of the increment is 1).
+
+3.2.1.6 LAB: Essenciais do loop for - contar mississippily
+Nível de dificuldade
+
+Muito fácil
+Objetivos
+
+Familiarizar o aluno a:
+
+    a utilização do loop for ;
+    refletir situações da vida real em código informático.
+
+Cenário
+
+Sabe o que é o Mississippi? Bem, é o nome de um dos estados e rios dos Estados Unidos. O rio Mississippi tem cerca de 3.765 quilómetros de comprimento, o que o torna o segundo rio mais longo dos Estados Unidos (o mais longo sendo o rio Missouri). É tão longo que uma única gota de água precisa de 90 dias para percorrer toda a sua extensão!
+
+A palavra Mississippi é também usada para um propósito ligeiramente diferente: contar mississippily.
+
+Se não está familiarizado com a frase, estamos aqui para lhe explicar o seu significado: é usado para contar segundos.
+
+A ideia por detrás disto é que adicionar a palavra Mississippi a um número ao contar segundos em voz alta faz com que soem mais perto do tempo do relógio, e por isso "um Mississippi, dois Mississippi, três Mississippi" levará aproximadamente três segundos de tempo real! É frequentemente utilizado por crianças que brincam às escondidas para garantir que o buscador faz uma contagem honesta.
+
+A sua tarefa aqui é muito simples: escreva um programa que utilize um loop for para “contar mississippily” até cinco. Tendo contado até cinco, o programa deve imprimir para o ecrã a mensagem final "Ready or not, here I come!"
+
+Use o esqueleto que fornecemos no editor.
+
+INFORMAÇÃO EXTRA
+
+Observe que o código no editor contém dois elementos que podem não estar totalmente claros para si neste momento: a declaração import time , e o método sleep() . Vamos falar sobre eles em breve.
+
+Por enquanto, gostaríamos apenas que soubesse que importámos o módulo time e usámos o método sleep() para suspender a execução de cada função print() subsequente dentro do loop for por um segundo, para que a mensagem enviada para a consola se assemelhe a uma contagem real. Não se preocupe - em breve aprenderá mais sobre módulos e métodos.
+Output esperado
+1 Mississippi
+2 Mississippi
+3 Mississippi
+4 Mississippi
+5 Mississippi
 
 LAB
 
@@ -895,6 +1027,24 @@ else:
     print("You haven't entered any number.")
 END CODE
 
+Os loops break e declarações continue .
+
+Até agora, temos tratado o corpo do loop como uma sequência indivisível e inseparável de instruções que são executadas completamente a cada volta do loop. No entanto, como programador, poderá ser confrontado com as seguintes escolhas:
+
+    parece que é desnecessário continuar o loop como um todo; deve abster-se de continuar a execução do corpo do loop e continuar;
+    parece que é necessário iniciar a próxima volta do loop sem completar a execução da volta atual.
+
+O Python fornece duas instruções especiais para a execução de ambas estas tarefas. Digamos, por uma questão de precisão, que a sua existência na linguagem não é necessária - um programador experiente é capaz de codificar qualquer algoritmo sem estas instruções. Tais adições, que não melhoram o poder expressivo da linguagem, mas apenas simplificam o trabalho do programador, são por vezes chamadas de doces sintáticos, ou açúcar sintático.
+
+Estas duas instruções são:
+
+    break - sai imediatamente do loop, e termina incondicionalmente a operação do loop; o programa começa a executar a instrução mais próxima após o corpo do loop;
+    continue - comporta-se como se o programa tivesse subitamente chegado ao fim do corpo; inicia-se a volta seguinte e a expressão da condição é testada imediatamente.
+
+Ambas as palavras são keywords.
+
+Agora vamos mostrar-lhe dois exemplos simples para ilustrar como as duas instruções funcionam. Veja o código no editor. Execute o programa e analise o output. Modifique o código e experimente.
+
 CODE
 largestNumber = -99999999
 counter = 0
@@ -933,6 +1083,31 @@ our program must:
     print the uneaten letters to the screen, each one of them on a separate line.
 
 Test your program with the data we've provided for you.
+
+
+3.2.1.9 LAB: A declaração break - Preso num loop
+Tempo estimado
+
+10-20 minutos
+Nível de dificuldade
+
+Fácil
+Objetivos
+
+Familiarizar o aluno a:
+
+    a utilização do loop break em loops;
+    refletir situações da vida real em código informático.
+
+Cenário
+
+O comando break é utilizada para sair/terminar um loop.
+
+Crie um programa que use um loop while e pede continuamente ao utilizador para introduzir uma palavra, a menos que o utilizador introduza "chupacabra" como a palavra secreta de saída, caso em que a mensagem "You've successfully left the loop." deve ser impressa para o ecrã, e o loop deve terminar.
+
+Não imprima nenhuma das palavras introduzidas pelo utilizador. Utilize o conceito de execução condicional e a break declaração.
+
+
 CODE
 # Prompt the user to enter a word
 userWord = input("Type a word: ")# and assign it to the userWord variable.
@@ -962,6 +1137,114 @@ Your program must:
 
 Look at the code in the editor. We've created wordWithoutVovels and assigned an empty string to it. Use concatenation operation to ask Python to combine selected letters into a longer string during subsequent loop turns, and assign it to the wordWithoutVovels variable.
 
+     3.2.1.10 LAB: A declaração continue - o Ugly Vowel Eater
+
+Tempo estimado
+
+10-20 minutos
+Nível de dificuldade
+
+Fácil
+Objetivos
+
+Familiarizar o aluno a:
+
+    a utilização do loop continue em loops;
+    refletir situações da vida real em código informático.
+
+Cenário
+
+O comando continue é utilizada para saltar o bloco atual e avançar para a próxima iteração, sem executar as declarações dentro do loop.
+
+Pode ser utilizada tanto com os loops while e for .
+
+A sua tarefa aqui é muito especial: tem de conceber um vowel eater (comedor de vogais)! Escreva um programa que use:
+
+    um loop for ;
+    o conceito de execução condicional (if-elif-else)
+    a declaração continue .
+
+O seu programa deve:
+
+    pedir ao utilizador para introduzir uma palavra;
+    usar user_word = user_word.upper() para converter a palavra introduzida pelo utilizador em maiúsculas; falaremos sobre os chamados métodos de strings e o método upper() muito em breve - não se preocupe;
+    usar execução condicional e a declaração continue para “comer” as seguintes vogais A, E, I, O, U da palavra introduzida;
+    imprimir as letras não comidas para o ecrã, cada uma delas numa linha separada.
+
+Teste o seu programa com os dados que lhe fornecemos.
+
+Dados de teste
+
+Input de amostra: Gregory
+
+Output esperado:
+G
+R
+G
+R
+Y
+
+Input de amostra: abstemious
+
+Output esperado:
+B
+S
+T
+M
+S
+
+Input de amostra: IOUEA
+
+Output esperado: 
+
+https://edube.org/sandbox/058cc7fc-50ca-11ec-9e68-0242157e55ca
+
+ 3.2.1.11 LAB: A declaração continue - o Pretty Vowel Eater
+Tempo estimado
+
+5-15 minutos
+Nível de dificuldade
+
+Fácil
+Objetivos
+
+Familiarizar o aluno a:
+
+    a utilização do loop continue em loops;
+    modificar e atualizar o código existente;
+    refletir situações da vida real em código informático.
+
+Cenário
+
+A sua tarefa aqui é ainda mais especial do que antes: deve redesenhar o comedor de vogais (feio) do laboratório anterior (3.1.2.10) e criar um comedor de vogais (bonito) melhor e mais aperfeiçoado! Escreva um programa que use:
+
+    um loop for ;
+    o conceito de execução condicional (if-elif-else)
+    a declaração continue .
+
+O seu programa deve:
+
+    pedir ao utilizador para introduzir uma palavra;
+    usar user_word = user_word.upper() para converter a palavra introduzida pelo utilizador em maiúsculas; falaremos sobre os chamados métodos de strings e o método upper() muito em breve - não se preocupe;
+    usar execução condicional e a declaração continue para “comer” as seguintes vogais A, E, I, O, U da palavra introduzida;
+    atribuir as letras não comidas à variável word_without_vowels e imprimir a variável para o ecrã.
+
+Veja o código no editor. Criámos word_without_vowels e atribuimos-lhe uma string vazia. Utilize a operação de concatenação para pedir ao Python que combine as letras selecionadas numa string mais longa durante os loops subsequentes, e atribua-a à variável word_without_vowels .
+
+Teste o seu programa com os dados que lhe fornecemos.
+
+Dados de teste
+
+Input de amostra: Gregory
+
+Output esperado:
+GRGRY
+
+Input de amostra: abstemious
+
+Output esperado:
+BSTMS
+
 CODE
 wordWithoutVovels = ""
 
@@ -985,5 +1268,4 @@ print(wordWithoutVovels)
 END CODE
 WHILE AND FOR HAVE AN ELSE  SENTENCE WHICH SHOWS THE FALSE FINAL RESULT
 
-3.1.2.14 LAB
   

@@ -1393,4 +1393,908 @@ A diferença no funcionamento dos operadores lógicos e de bit é importante: os
 Os operadores bitwise são mais rigorosos: lidam com cada bit separadamente. Se assumirmos que a variável inteira ocupa 64 bits (o que é comum nos sistemas informáticos modernos), podemos imaginar a operação bitwise como uma avaliação de 64 vezes do operador lógico para cada par de bits dos argumentos. Esta analogia é obviamente imperfeita, pois no mundo real todas estas 64 operações são realizadas ao mesmo tempo (simultaneamente).
 
 
+Operações lógicas versus bit: continuação
+
+Vamos agora mostrar-lhe um exemplo da diferença de funcionamento entre as operações lógicas e as operações de bit. Vamos assumir que as seguintes atribuições foram realizadas:
+i = 15
+j = 22
+
+
+Se assumirmos que os números inteiros são armazenados com 32 bits, a imagem bitwise das duas variáveis será a seguinte:
+i: 00000000000000000000000000001111
+j: 00000000000000000000000000010110
+
+A atribuição é dada:
+log = i and j
+
+
+Estamos a lidar aqui com uma conjunção lógica. Vamos traçar o curso dos cálculos. Ambas as variáveis i e j não são zeros, por isso serão consideradas para representar True. Consultando a tabela da verdade para o operador and , podemos ver que o resultado será True. Nenhuma outra operação é realizada.
+log: True
+
+Agora a operação bitwise - aqui está ela:
+bit = i & j
+
+
+O operador & operará com cada par de bits correspondentes separadamente, produzindo os valores dos bits relevantes do resultado. Portanto, o resultado será o seguinte:
+i 	00000000000000000000000000001111
+j 	00000000000000000000000000010110
+bit = i & j 	00000000000000000000000000000110
+
+Estes bits correspondem ao valor inteiro de seis.
+
+
+Vejamos agora os operadores de negação. Primeiro, o lógico:
+logneg = not i
+
+
+A variável logneg será definida como False - nada mais precisa de ser feito.
+
+A negação bitwise é assim:
+bitneg = ~i
+
+
+Pode ser um pouco surpreendente: o valor da variável bitneg é -16. Isto pode parecer estranho, mas não é de todo. Se desejar saber mais, deve verificar o sistema de numeração binária e as regras que regem os números complementares de dois.
+i 	00000000000000000000000000001111
+bitneg = ~i 	11111111111111111111111111110000
+
+Cada um destes operadores de dois argumentos pode ser utilizado de forma abreviada. Estes são os exemplos das suas notações equivalentes:
+x = x & y 	x &= y
+x = x | y 	x |= y
+x = x ^ y 	x ^= y
   
+Listas 
+ lista é uma coleção de elementos, mas cada elemento é um escalar.
+ 
+numbers = [10, 5, 7, 2, 1]
+print("Original list content:", numbers)  # Printing original list content.
+
+numbers[0] = 111
+print("\nPrevious list content:", numbers)  # Printing previous list content.
+
+numbers[1] = numbers[4]  # Copying value of the fifth element to the second.
+print("New list content:", numbers)  # Printing current list content.
+
+O método len() .
+
+O comprimento de uma lista pode variar durante a execução. Novos elementos podem ser acrescentados à lista, enquanto outros podem ser retirados da mesma. Isto significa que a lista é uma entidade muito dinâmica.
+
+Se quiser verificar o comprimento atual da lista, pode usar uma função chamada len() (o seu nome vem de length (comprimento)).
+
+A função toma o nome da lista como argumento, e devolve o número de elementos atualmente armazenados dentro da lista (por outras palavras - o comprimento da lista).
+
+numbers = [10, 5, 7, 2, 1]
+print("Original list content:", numbers)  # Printing original list content.
+
+numbers[0] = 111
+print("\nPrevious list content:", numbers)  # Printing previous list content.
+
+numbers[1] = numbers[4]  # Copying value of the fifth element to the second.
+print("Previous list content:", numbers)  # Printing previous list content.
+
+print("\nList length:", len(numbers))  # Printing the list's length.
+
+Remover elementos de uma lista
+
+Qualquer elemento da lista pode ser removido a qualquer momento - isto é feito com uma instrução chamada del (delete). Nota: é uma instrução, não uma função.
+
+É preciso apontar o elemento a ser removido - desaparecerá da lista, e o comprimento da lista será reduzido em um.
+
+Olhe para o snippet abaixo. Consegue adivinhar que output irá produzir? Execute o programa no editor e verifique.
+del numbers[1]
+print(len(numbers))
+print(numbers)
+
+
+Não se pode aceder a um elemento que não existe - não se pode obter o seu valor nem atribuir-lhe um valor. Ambas estas instruções irão agora causar erros de runtime:
+print(numbers[4])
+numbers[4] = 1
+
+
+Adicione o snippet acima após a última linha de código no editor, execute o programa e verifique o que acontece.
+
+Nota: retirámos um dos elementos da lista - agora só há quatro elementos na lista. Isto significa que o elemento número quatro não existe.
+
+numbers = [10, 5, 7, 2, 1]
+print("Original list content:", numbers)  # Printing original list content.
+
+numbers[0] = 111
+print("\nPrevious list content:", numbers)  # Printing previous list content.
+
+numbers[1] = numbers[4]  # Copying value of the fifth element to the second.
+print("Previous list content:", numbers)  # Printing previous list content.
+
+print("\nList's length:", len(numbers))  # Printing previous list length.
+
+###
+
+del numbers[1]  # Removing the second element from the list.
+print("New list's length:", len(numbers))  # Printing new list length.
+print("\nNew list content:", numbers)  # Printing current list content.
+
+###
+
+
+Índices negativos são legais
+
+Pode parecer estranho, mas os índices negativos são legais, e podem ser muito úteis.
+
+Um elemento com um index igual a -1 é o último na lista.
+print(numbers[-1])
+
+
+O snippet de exemplo terá como output 1. Execute o programa e verifique.
+
+Da mesma forma, o elemento com um index igual a -2 é o penúltimo na lista.
+numbers = [111, 7, 2, 1]
+print(numbers[-1])
+print(numbers[-2])
+
+3.4.1.6 LAB: Noções básicas de listas
+Tempo estimado
+
+5 minutos
+Nível de dificuldade
+
+Muito fácil
+Objetivos
+
+Familiarizar o aluno a:
+
+    utilizar instruções básicas relacionadas com listas;
+    criar e modificar listas.
+
+Cenário
+
+Houve uma vez um chapéu. O chapéu não continha nenhum coelho, mas uma lista de cinco números: 1, 2, 3, 4, e 5.
+
+A sua tarefa é:
+
+    escrever uma linha de código que peça ao utilizador para substituir o número médio na lista por um número inteiro introduzido pelo utilizador (Passo 1)
+    escrever uma linha de código que remova o último elemento da lista (Passo 2)
+    escrever uma linha de código que imprima o comprimento da lista existente (Passo 3).
+
+Pronto para este desafio?
+
+hat_list = [1, 2, 3, 4, 5]  # This is an existing list of numbers hidden in the hat.
+
+# Step 1: write a line of code that prompts the user
+# to replace the middle number with an integer number entered by the user.
+
+# Step 2: write a line of code that removes the last element from the list.
+
+# Step 3: write a line of code that prints the length of the existing list.
+
+print(hat_list)
+
+LAB
+hat_list = [1, 2, 3, 4, 5]  # This is an existing list of numbers hidden in the hat.
+
+# Step 1: write a line of code that prompts the user
+# to replace the middle number with an integer number entered by the user.
+hat_list[2] = int(input("Enter a number to replace the middle one, please:"))
+# Step 2: write a line of code that removes the last element from the list.
+del hat_list[-1]
+# Step 3: write a line of code that prints the length of the existing list.
+print("New list's length:", len(hat_list))
+print(hat_list)
+END LAB
+
+
+Funções vs. métodos
+
+Um método é um tipo específico de função - comporta-se como uma função e parece uma função, mas difere na forma como atua, e no seu estilo de invocação.
+
+Uma função não pertence a nenhum dado - recebe dados, pode criar novos dados e (geralmente) produz um resultado.
+
+Um método faz todas estas coisas, mas também é capaz de alterar o estado de uma entidade selecionada.
+
+Um método é propriedade dos dados para os quais trabalha, enquanto uma função é propriedade de todo o código.
+
+Isto também significa que a invocação de um método requer alguma especificação dos dados a partir dos quais o método é invocado.
+
+Pode parecer intrigante aqui, mas lidaremos com isso em profundidade quando nos aprofundarmos na programação orientada ao objeto.
+
+Em geral, uma invocação de função típica pode parecer-se com isto:
+result = function(arg)
+
+
+A função toma um argumento, faz algo, e devolve um resultado.
+
+
+Um método típico de invocação é geralmente semelhante a este:
+result = data.method(arg)
+
+
+Nota: o nome do método é precedido do nome dos dados que possuem o método. Em seguida, adiciona-se um ponto, seguido do nome do método, e um par de parêntesis que encerra os argumentos.
+
+O método comportar-se-á como uma função, mas pode fazer algo mais - pode alterar o estado interno dos dados a partir dos quais foi invocado.
+
+Pode perguntar: porque estamos a falar de métodos e não de listas?
+
+Esta é uma questão essencial neste momento, pois vamos mostrar-lhe como adicionar novos elementos a uma lista existente. Isto pode ser feito com métodos pertencentes a todas as listas, e não por funções.
+
+Adicionar elementos a uma lista: append() e insert()
+
+Um novo elemento pode ser colado no fim da lista existente:
+list.append(value)
+
+
+Tal operação é realizada por um método chamado append(). Toma o valor do seu argumento e coloca-o no final da lista que possui o método.
+
+O comprimento da lista aumenta então em um.
+
+O método insert() é um pouco mais inteligente - pode acrescentar um novo elemento em qualquer lugar da lista, e não apenas no final.
+list.insert(location, value)
+
+
+São necessários dois argumentos:
+
+    o primeiro mostra a localização necessária do elemento a ser inserido; nota: todos os elementos existentes que ocupam locais à direita do novo elemento (incluindo o que se encontra na posição indicada) são deslocados para a direita, a fim de criar espaço para o novo elemento;
+    o segundo é o elemento a ser inserido.
+
+Veja o código no editor. Veja como utilizamos os append() e insert() métodos. Preste atenção ao que acontece após a utilização insert(): o primeiro elemento é agora o segundo, o segundo o terceiro, e assim por diante.
+
+Adicione o seguinte snippet após a última linha de código no editor:
+numbers.insert(1, 333)
+
+
+Imprima o conteúdo da lista final para o ecrã e veja o que acontece. O snippet acima do snippet insere 333 na lista, tornando-o no segundo elemento. O anterior segundo elemento torna-se o terceiro, o terceiro o quarto, e assim por diante.
+
+numbers = [111, 7, 2, 1]
+print(len(numbers))
+print(numbers)
+
+###
+
+numbers.append(4)
+
+print(len(numbers))
+print(numbers)
+
+###
+
+numbers.insert(0, 222)
+print(len(numbers))
+print(numbers)
+
+#
+
+Adicionar elementos a uma lista: continuação
+
+Pode iniciar a vida de uma lista tornando-a vazia (isto é feito com um par de parêntesis retos vazio) e depois adicionando-lhe novos elementos conforme necessário.
+
+Veja o snippet no editor. Tente adivinhar o seu output após a execução do loop for . Execute o programa para verificar se estava certo.
+
+Será uma sequência de números inteiros consecutivos a partir de 1 (depois adiciona-se um a todos os valores anexados) até 5.
+
+Modificámos um pouco o snippet:
+my_list = []  # Creating an empty list.
+
+for i in range(5):
+    my_list.insert(0, i + 1)
+
+print(my_list)
+
+
+O que acontecerá agora? Execute o programa e verifique se desta vez também estava certo.
+
+Deve obter a mesma sequência, mas em ordem inversa (este é o mérito de usar o método insert() ). 
+
+my_list = []  # Creating an empty list.
+
+for i in range(5):
+    my_list.append(i + 1)
+
+print(my_list)
+
+my_list = []  # Creating an empty list.
+
+for i in range(5):
+    my_list.insert(0, i + 1)
+
+print(my_list)
+
+Utilização de listas
+
+O loop for tem uma variante muito especial que pode processar listas muito eficazmente - vejamos isso.
+
+Vamos supor que deseja calcular a soma de todos os valores armazenados na lista my_list .
+
+É necessária uma variável cuja soma será armazenada e à qual será inicialmente atribuído um valor de 0 - o seu nome será total. (Nota: não vamos nomeá-la sum visto o Python usar o mesmo nome para uma das suas funções internas - sum(). Utilizar o mesmo nome seria geralmente considerado uma má prática). Em seguida, acrescenta-lhe todos os elementos da lista utilizando o loop for . Veja o snippet no editor.
+
+Vamos comentar este exemplo:
+
+    à lista é atribuída uma sequência de cinco valores inteiros;
+    a variável i toma os valores 0, 1, 2, 3, e 4, e depois indexa a lista, selecionando os elementos seguintes: o primeiro, o segundo, o terceiro, o quarto e o quinto;
+    cada um destes elementos é adicionado em conjunto pelo operador += à variável total , dando o resultado final no fim do loop;
+    observe a forma como a função len() foi utilizada - torna o código independente de quaisquer possíveis alterações no conteúdo da lista.
+
+
+A segunda face do loop for .
+
+Mas o loop for pode fazer muito mais. Pode ocultar todas as ações ligadas à indexação da lista, e entregar todos os elementos da lista de uma forma prática.
+
+Este snippet modificado mostra como isto funciona:
+my_list = [10, 1, 8, 3, 5]
+total = 0
+
+for i in my_list:
+    total += i
+
+print(total)
+
+
+O que acontece aqui?
+
+    a instrução for especifica a variável usada para navegar na lista (i aqui) seguida pela keyword in e pelo nome da lista que está a ser processada (my_list aqui)
+    à variável i são atribuídos os valores de todos os elementos da lista subsequente, e o processo ocorre tantas vezes quantos os elementos da lista;
+    isto significa que se utiliza a variável i como uma cópia dos valores dos elementos, e não se precisa de utilizar índices;
+    a função len() também não é necessária aqui.
+
+
+Utilização de listas
+
+O loop for tem uma variante muito especial que pode processar listas muito eficazmente - vejamos isso.
+
+Vamos supor que deseja calcular a soma de todos os valores armazenados na lista my_list .
+
+É necessária uma variável cuja soma será armazenada e à qual será inicialmente atribuído um valor de 0 - o seu nome será total. (Nota: não vamos nomeá-la sum visto o Python usar o mesmo nome para uma das suas funções internas - sum(). Utilizar o mesmo nome seria geralmente considerado uma má prática). Em seguida, acrescenta-lhe todos os elementos da lista utilizando o loop for . Veja o snippet no editor.
+
+Vamos comentar este exemplo:
+
+    à lista é atribuída uma sequência de cinco valores inteiros;
+    a variável i toma os valores 0, 1, 2, 3, e 4, e depois indexa a lista, selecionando os elementos seguintes: o primeiro, o segundo, o terceiro, o quarto e o quinto;
+    cada um destes elementos é adicionado em conjunto pelo operador += à variável total , dando o resultado final no fim do loop;
+    observe a forma como a função len() foi utilizada - torna o código independente de quaisquer possíveis alterações no conteúdo da lista.
+
+
+A segunda face do loop for .
+
+Mas o loop for pode fazer muito mais. Pode ocultar todas as ações ligadas à indexação da lista, e entregar todos os elementos da lista de uma forma prática.
+
+Este snippet modificado mostra como isto funciona:
+my_list = [10, 1, 8, 3, 5]
+total = 0
+
+for i in my_list:
+    total += i
+
+print(total)
+
+
+O que acontece aqui?
+
+    a instrução for especifica a variável usada para navegar na lista (i aqui) seguida pela keyword in e pelo nome da lista que está a ser processada (my_list aqui)
+    à variável i são atribuídos os valores de todos os elementos da lista subsequente, e o processo ocorre tantas vezes quantos os elementos da lista;
+    isto significa que se utiliza a variável i como uma cópia dos valores dos elementos, e não se precisa de utilizar índices;
+    a função len() também não é necessária aqui.
+
+**Utilização de listas
+
+O loop for tem uma variante muito especial que pode processar listas muito eficazmente - vejamos isso.
+
+Vamos supor que deseja calcular a soma de todos os valores armazenados na lista my_list .
+
+É necessária uma variável cuja soma será armazenada e à qual será inicialmente atribuído um valor de 0 - o seu nome será total. (Nota: não vamos nomeá-la sum visto o Python usar o mesmo nome para uma das suas funções internas - sum(). Utilizar o mesmo nome seria geralmente considerado uma má prática). Em seguida, acrescenta-lhe todos os elementos da lista utilizando o loop for . Veja o snippet no editor.
+
+Vamos comentar este exemplo:
+
+    à lista é atribuída uma sequência de cinco valores inteiros;
+    a variável i toma os valores 0, 1, 2, 3, e 4, e depois indexa a lista, selecionando os elementos seguintes: o primeiro, o segundo, o terceiro, o quarto e o quinto;
+    cada um destes elementos é adicionado em conjunto pelo operador += à variável total , dando o resultado final no fim do loop;
+    observe a forma como a função len() foi utilizada - torna o código independente de quaisquer possíveis alterações no conteúdo da lista.
+
+
+A segunda face do loop for .
+
+Mas o loop for pode fazer muito mais. Pode ocultar todas as ações ligadas à indexação da lista, e entregar todos os elementos da lista de uma forma prática.
+
+Este snippet modificado mostra como isto funciona:
+my_list = [10, 1, 8, 3, 5]
+total = 0
+
+for i in my_list:
+    total += i
+
+print(total)
+
+
+O que acontece aqui?
+
+    a instrução for especifica a variável usada para navegar na lista (i aqui) seguida pela keyword in e pelo nome da lista que está a ser processada (my_list aqui)
+    à variável i são atribuídos os valores de todos os elementos da lista subsequente, e o processo ocorre tantas vezes quantos os elementos da lista;
+    isto significa que se utiliza a variável i como uma cópia dos valores dos elementos, e não se precisa de utilizar índices;
+    a função len() também não é necessária aqui.
+
+Utilização de listas
+
+O loop for tem uma variante muito especial que pode processar listas muito eficazmente - vejamos isso.
+
+Vamos supor que deseja calcular a soma de todos os valores armazenados na lista my_list .
+
+É necessária uma variável cuja soma será armazenada e à qual será inicialmente atribuído um valor de 0 - o seu nome será total. (Nota: não vamos nomeá-la sum visto o Python usar o mesmo nome para uma das suas funções internas - sum(). Utilizar o mesmo nome seria geralmente considerado uma má prática). Em seguida, acrescenta-lhe todos os elementos da lista utilizando o loop for . Veja o snippet no editor.
+
+Vamos comentar este exemplo:
+
+    à lista é atribuída uma sequência de cinco valores inteiros;
+    a variável i toma os valores 0, 1, 2, 3, e 4, e depois indexa a lista, selecionando os elementos seguintes: o primeiro, o segundo, o terceiro, o quarto e o quinto;
+    cada um destes elementos é adicionado em conjunto pelo operador += à variável total , dando o resultado final no fim do loop;
+    observe a forma como a função len() foi utilizada - torna o código independente de quaisquer possíveis alterações no conteúdo da lista.
+
+
+A segunda face do loop for .
+
+Mas o loop for pode fazer muito mais. Pode ocultar todas as ações ligadas à indexação da lista, e entregar todos os elementos da lista de uma forma prática.
+
+Este snippet modificado mostra como isto funciona:
+my_list = [10, 1, 8, 3, 5]
+total = 0
+
+for i in my_list:
+    total += i
+
+print(total)
+
+
+O que acontece aqui?
+
+    a instrução for especifica a variável usada para navegar na lista (i aqui) seguida pela keyword in e pelo nome da lista que está a ser processada (my_list aqui)
+    à variável i são atribuídos os valores de todos os elementos da lista subsequente, e o processo ocorre tantas vezes quantos os elementos da lista;
+    isto significa que se utiliza a variável i como uma cópia dos valores dos elementos, e não se precisa de utilizar índices;
+    a função len() também não é necessária aqui.
+
+my_list = [10, 1, 8, 3, 5]
+total = 0
+
+for i in range(len(my_list)):
+    total += my_list[i]
+
+print(total)
+
+Listas em ação
+
+Deixemos as listas de lado por um breve momento e vejamos uma questão intrigante.
+
+Imagine que precisa de reorganizar os elementos de uma lista, ou seja, inverter a ordem dos elementos: o primeiro e o quinto, bem como o segundo e o quarto elementos serão trocados. O terceiro permanecerá intocado.
+
+Pergunta: como se pode trocar os valores de duas variáveis?
+
+Veja o snippet:
+variable_1 = 1
+variable_2 = 2
+
+variable_2 = variable_1
+variable_1 = variable_2
+
+
+Se fizer algo como isto, perderá o valor previamente armazenado em variable_2. Alterar a ordem das atribuições não ajudará. É necessária uma terceira variável que sirva como armazenamento auxiliar.
+
+É assim que se pode fazer:
+variable_1 = 1
+variable_2 = 2
+
+auxiliary = variable_1
+variable_1 = variable_2
+variable_2 = auxiliary
+
+
+O Python oferece uma forma mais conveniente de fazer a troca - veja:
+variable_1 = 1
+variable_2 = 2
+
+variable_1, variable_2 = variable_2, variable_1
+
+
+Claro, eficaz e elegante - não é?
+
+Listas em ação
+
+Agora pode facilmente trocar os elementos da lista para inverter a sua ordem:
+my_list = [10, 1, 8, 3, 5]
+
+my_list[0], my_list[4] = my_list[4], my_list[0]
+my_list[1], my_list[3] = my_list[3], my_list[1]
+
+print(my_list)
+
+
+Execute o snippet. O seu output deve ter este aspeto:
+[5, 3, 8, 1, 10]
+
+output
+
+Fica bem com cinco elementos.
+
+Será ainda aceitável com uma lista contendo 100 elementos? Não, não será.
+
+Pode utilizar o loop for para fazer a mesma coisa automaticamente, independentemente do comprimento da lista? Sim, pode.
+
+Foi assim que o fizemos:
+my_list = [10, 1, 8, 3, 5]
+length = len(my_list)
+
+for i in range(length // 2):
+    my_list[i], my_list[length - i - 1] = my_list[length - i - 1], my_list[i]
+
+print(my_list)
+
+
+Nota:
+
+    nós atribuímos a variável length com o comprimento da lista atual (isto torna o nosso código um pouco mais claro e mais curto)
+    lançámos o loop for para correr através do seu corpo length // 2 vezes (isto funciona bem para listas com comprimentos pares e ímpares, porque quando a lista contém um número ímpar de elementos, o do meio permanece intocado)
+    trocamos o i-ésimo elemento (desde o início da lista) com o que tem um index igual a (length - i - 1) (do final da lista); no nosso exemplo, para i igual a 0 o ramo (lenght - i - 1) dá 4; para i igual a 1, dá 3 - Isto é exatamente o que precisávamos.
+
+As listas são extremamente úteis, e irá encontrá-las com muita frequência.
+
+3.4.1.13 LAB: O básico das listas - os Beatles
+Tempo estimado
+
+10-15 minutos
+Nível de dificuldade
+
+Fácil
+Objetivos
+
+Familiarizar o aluno a:
+
+    a criação e modificação de listas simples;
+    utilizar métodos para modificar listas.
+
+Cenário
+
+Os Beatles foram um dos grupos musicais mais populares dos anos 1960, e a banda mais best-seller da história. Algumas pessoas consideram-nas o ato mais influente da era do rock. De facto, foram incluídos na compilação da revista Time das 100 pessoas mais influentes do século XX.
+
+A banda passou por muitas mudanças de formação, culminando em 1962 com o line-up de John Lennon, Paul McCartney, George Harrison, e Richard Starkey (mais conhecido como Ringo Starr).
+
+Escreva um programa que reflita estas mudanças e lhe permita praticar com o conceito de listas. A sua tarefa é:
+
+    passo 1: criar uma lista vazia com o nome beatles;
+    passo 2: utilizar o método append() para adicionar os seguintes membros da banda à lista: John Lennon, Paul McCartney, e George Harrison;
+    passo 3: utilizar o loop for e o método append() para solicitar ao utilizador que adicione os seguintes membros da banda à lista: Stu Sutcliffe, e Pete Best;
+    passo 4: utilizar a instrução del para remover Stu Sutcliffe e Pete Best da lista;
+    passo 5: utilizar o método insert() para adicionar Ringo Starr ao início da lista.
+
+A propósito, é fã dos Beatles? (Os Beatles são uma das bandas favoritas de Greg. Mas calma...quem é o Greg....?)
+
+    Sandbox
+
+Code
+# step 1
+print("Step 1:", beatles)
+
+# step 2
+print("Step 2:", beatles)
+
+# step 3
+print("Step 3:", beatles)
+
+# step 4
+print("Step 4:", beatles)
+
+# step 5
+print("Step 5:", beatles)
+
+
+# testing list legth
+print("The Fab", len(beatles))
+https://edube.org/sandbox/4538eddc-51c3-11ec-99e0-0242157e55ca
+
+Key takeaways
+
+1. A lista é um tipo de dados em Python usada para armazenar vários objetos. É uma coleção ordenada e mutável de ítens separados por vírgulas, entre parêntesis retos, por exemplo:
+my_list = [1, None, True, "I am a string", 256, 0]
+
+
+2. As listas podem ser indexadas e atualizadas, por exemplo:
+my_list = [1, None, True, 'I am a string', 256, 0]
+print(my_list[3])  # outputs: I am a string
+print(my_list[-1])  # outputs: 0
+
+my_list[1] = '?'
+print(my_list)  # outputs: [1, '?', True, 'I am a string', 256, 0]
+
+my_list.insert(0, "first")
+my_list.append("last")
+print(my_list)  # outputs: ['first', 1, '?', True, 'I am a string', 256, 0, 'last']
+
+
+3. As listas podem ser nested, por exemplo:
+my_list = [1, 'a', ["list", 64, [0, 1], False]]
+
+
+Aprenderá mais sobre o nesting no módulo 3.1.7 - por enquanto, só queremos que esteja ciente de que algo como isto também é possível.
+
+4. Os elementos da lista e as listas podem ser excluídos, por exemplo:
+my_list = [1, 2, 3, 4]
+del my_list[2]
+print(my_list)  # outputs: [1, 2, 4]
+
+del my_list  # deletes the whole list
+
+
+Novamente, aprenderá mais sobre isto no módulo 3.1.6 - não se preocupe. Por enquanto, basta tentar experimentar o código acima e verificar como a sua alteração afeta o output.
+
+5. As listas podem ser iteradas através da utilização do loop for , por exemplo:
+my_list = ["white", "purple", "blue", "yellow", "green"]
+
+for color in my_list:
+    print(color)
+
+
+6. A função len() pode ser usada para verificar o comprimento da lista, por exemplo:
+my_list = ["white", "purple", "blue", "yellow", "green"]
+print(len(my_list))  # outputs 5
+
+del my_list[2]
+print(len(my_list))  # outputs 4
+
+
+7. Uma invocação de função típica parece-se com a seguinte: result = function(arg), enquanto uma invocação de método típica parece-se com isto:result = data.method(arg).
+
+
+O bubble sort
+
+Agora que pode efetivamente fazer malabarismos com os elementos das listas, é tempo de aprender a ordená-los. Muitos algoritmos de ordenação foram inventados até agora, que diferem muito na velocidade, bem como na complexidade. Vamos mostrar-lhe um algoritmo muito simples, fácil de compreender, mas infelizmente também não muito eficiente. É utilizado muito raramente, e certamente não para listas grandes e extensas.
+
+Digamos que uma lista pode ser ordenada de duas maneiras:
+
+    crescente (ou mais precisamente - não decrescente) - se em cada par de elementos adjacentes, o primeiro elemento não for maior do que o segundo;
+    decrescente (ou mais precisamente - não crescente) - se em cada par de elementos adjacentes, o primeiro elemento não for inferior ao segundo.
+
+Nas secções seguintes, ordenaremos a lista por ordem crescente, de modo a que os números sejam ordenados do mais pequeno para o maior.
+
+Aqui está a lista:
+8
+	
+10
+	
+6
+	
+2
+	
+4
+
+Tentaremos usar a seguinte abordagem: tomaremos o primeiro e o segundo elementos e compará-los-emos; se determinarmos que estão na ordem errada (ou seja, o primeiro é maior que o segundo), trocá-los-emos; se a sua ordem for válida, não faremos nada. Um olhar sobre a nossa lista confirma esta última - os elementos 01 e 02 estão na ordem correta, como em 8 < 10.
+
+Agora olhe para o segundo e o terceiro elementos. Estão nas posições erradas. Temos de os trocar:
+8
+	
+6
+	
+10
+	
+2
+	
+4
+
+Vamos mais longe, e olhemos para o terceiro e quarto elementos. Novamente, não é assim que deveria ser. Temos de os trocar:
+8
+	
+6
+	
+2
+	
+10
+	
+4
+
+Agora verificamos o quarto e o quinto elementos. Sim, eles também estão nas posições erradas. Outra troca ocorre:
+8
+	
+6
+	
+2
+	
+4
+	
+10
+
+A primeira passagem pela lista já está terminada. Ainda estamos longe de terminar o nosso trabalho, mas algo de curioso aconteceu entretanto. O maior elemento, 10, já foi para o final da lista. Note-se que este é o lugar desejado para ele. Todos os elementos restantes formam uma confusão pitoresca, mas este já está no lugar.
+
+
+Agora, por um momento, tente imaginar a lista de uma forma ligeiramente diferente - nomeadamente, assim:
+10
+4
+2
+6
+8
+
+Olhe - 10 está no topo. Poderíamos dizer que flutuou do fundo para a superfície, tal como a bolha numa taça de champanhe. O método de classificação deriva o seu nome da mesma observação - chama-se um bubble sort (uma espécie de bolha).
+
+Agora começamos com a segunda passagem através da lista. Olhamos para o primeiro e segundo elementos - é necessária uma troca:
+6
+	
+8
+	
+2
+	
+4
+	
+10
+
+Tempo para o segundo e terceiro elementos: temos de os trocar também:
+6
+	
+2
+	
+8
+	
+4
+	
+10
+
+Agora o terceiro e quarto elementos, e a segunda passagem está terminada, visto 8 já estar no lugar:
+6
+	
+2
+	
+4
+	
+8
+	
+10
+
+Começamos a próxima passagem imediatamente. Observe cuidadosamente o primeiro e o segundo elementos - é necessária outra troca:
+2
+	
+6
+	
+4
+	
+8
+	
+10
+
+Agora 6 precisa de ser posto no lugar. Trocamos o segundo e o terceiro elementos:
+2
+	
+4
+	
+6
+	
+8
+	
+10
+
+A lista já está ordenada. Não temos mais nada a fazer. Isto é exatamente o que queremos.
+
+Como pode ver, a essência deste algoritmo é simples: comparamos os elementos adjacentes e, trocando alguns deles, atingimos o nosso objetivo
+
+Vamos codificar em Python todas as ações realizadas durante uma única passagem através da lista, e depois vamos considerar quantas passagens realmente precisamos para a realizar. Ainda não explicámos isto até agora, e faremos isso um pouco mais tarde.
+
+Classificar uma lista
+
+Quantas passagens precisamos para ordenar a lista completa?
+
+Resolvemos esta questão da seguinte forma: introduzimos outra variável; a sua tarefa é observar se foi feita alguma troca durante a passagem ou não; se não houver troca, então a lista já está ordenada, e nada mais tem de ser feito. Criamos uma variável chamada swapped, e atribuímos-lhe um valor de False , para indicar que não há trocas. Caso contrário, será atribuído True.
+my_list = [8, 10, 6, 2, 4]  # list to sort
+
+for i in range(len(my_list) - 1):  # we need (5 - 1) comparisons
+    if my_list[i] > my_list[i + 1]:  # compare adjacent elements
+        my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]  # If we end up here, we have to swap the elements.
+
+
+Deverá ser capaz de ler e compreender este programa sem quaisquer problemas:
+my_list = [8, 10, 6, 2, 4]  # list to sort
+swapped = True  # It's a little fake, we need it to enter the while loop.
+
+while swapped:
+    swapped = False  # no swaps so far
+    for i in range(len(my_list) - 1):
+        if my_list[i] > my_list[i + 1]:
+            swapped = True  # a swap occurred!
+            my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
+
+print(my_list)
+
+
+Execute o programa e teste-o.
+https://edube.org/sandbox/e77bfb14-51c5-11ec-b851-0242157e55ca
+
+
+
+
+
+O bubble sort - versão interativa
+
+No editor pode ver um programa completo, enriquecido por uma conversa com o utilizador, e que permite ao utilizador introduzir e imprimir elementos da lista: O bubble sort - versão interativa final.
+
+O Python, contudo, tem os seus próprios mecanismos de ordenação. Ninguém precisa de escrever a sua própria ordenação, uma vez que existe um número suficiente de ferramentas prontas a usar.
+
+Explicámos-lhe este sistema de ordenação porque é importante aprender a processar o conteúdo de uma lista, e mostrar-lhe como a ordenação real pode funcionar.
+
+Se quiser que o Python ordene a sua lista, pode fazê-lo desta forma:
+my_list = [8, 10, 6, 2, 4]
+my_list.sort()
+print(my_list)
+
+
+É tão simples quanto isso.
+
+O output do snippet é o seguinte:
+[2, 4, 6, 8, 10]
+
+output
+
+Como pode ver, todas as listas têm um método chamado sort(), que as classifica o mais rapidamente possível. Já aprendeu alguns dos métodos de lista antes, e vai aprender mais sobre outros muito em breve.
+
+my_list = []
+swapped = True
+num = int(input("How many elements do you want to sort: "))
+
+for i in range(num):
+    val = float(input("Enter a list element: "))
+    my_list.append(val)
+
+while swapped:
+    swapped = False
+    for i in range(len(my_list) - 1):
+        if my_list[i] > my_list[i + 1]:
+            swapped = True
+            my_list[i], my_list[i + 1] = my_list[i + 1], my_list[i]
+
+print("\nSorted:")
+print(my_list)
+
+Key takeaways
+
+1. Pode utilizar a keyword sort() para ordenar elementos de uma lista, por exemplo:
+lst = [5, 3, 1, 2, 4]
+print(lst)
+
+lst.sort()
+print(lst)  # outputs: [1, 2, 3, 4, 5]
+
+
+2. Há também um método de lista chamado reverse(), que pode utilizar para inverter a lista, por exemplo
+lst = [5, 3, 1, 2, 4]
+print(lst)
+
+lst.reverse()
+print(lst)  # outputs: [4, 2, 1, 3, 5]
+
+Exercício 1
+
+Qual é o output do seguinte snippet?
+lst = ["D", "F", "A", "Z"]
+lst.sort()
+
+print(lst)
+
+
+['A', 'D', 'F', 'Z']
+
+Exercício 2
+
+Qual é o output do seguinte snippet?
+a = 3
+b = 1
+c = 2
+
+lst = [a, c, b]
+lst.sort()
+
+print(lst)
+
+
+[1, 2, 3]
+
+Exercício 3
+
+Qual é o output do seguinte snippet?
+a = "A"
+b = "B"
+c = "C"
+d = " "
+
+lst = [a, b, c, d]
+lst.reverse()
+
+print(lst)
+
+
+[' ', 'C', 'B', 'A']
+
+
+
